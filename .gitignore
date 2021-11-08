@@ -37,5 +37,5 @@ sysinfo.txt
 *.unitypackage
 
 # Logs
-Logs/
+/Good Luck Hunting/Logs
 *.log
