@@ -16,14 +16,17 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 aimPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        aimPos.z = 0;
+
         // Get the user's horizontal input
-        horizontalInput = Input.GetAxis("Horizontal");
+        float horizontalInput = Input.GetAxis("Horizontal");
 
         // Move the launcher left and right
         transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
