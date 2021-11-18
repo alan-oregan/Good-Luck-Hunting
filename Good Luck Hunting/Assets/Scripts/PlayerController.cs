@@ -4,27 +4,49 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // variables
-    public float speed = 5.0f;
-    public GameObject projectilePrefab;
-    public GameObject playerObject;
 
+    // Game Objects
+    public GameObject projectilePrefab;
+
+    // Variables
+    public float movementSpeed = 5.0f;
     private float verticalInput;
     private float horizontalInput;
+    private float verticalMouseRotation;
+    private float horizontalMouseRotation;
 
     // offset for tip of launcher relative to launcher
     private Vector3 offset = new Vector3(0, 0.85f, 1);
 
-    private float mouseRotation;
-    public float mouseSpeed = 10f;
+    void projectileLogic() {
 
-    void launchProjectile() {
-
-        // Create the projectile at the tip of the launcher
-        Instantiate(projectilePrefab, transform.position + offset, projectilePrefab.transform.rotation);
-
+        // On spacebar press or primary mouse button, shoot the projectile
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            // Create the projectile at the tip of the launcher
+            Instantiate(projectilePrefab, transform.position + offset, projectilePrefab.transform.rotation);
+        }
     }
 
+    // Moving the launcher
+    void movementLogic() {
+        // Move the launcher horizontally with keyboard input
+        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * movementSpeed);
+
+        // rotating the launcher vertically and horizontally with mouse input
+        float horizontalMouseInput = Input.GetAxis("Mouse X") * movementSpeed;
+        float verticalMouseInput = Input.GetAxis("Mouse Y") * movementSpeed;
+
+        verticalMouseRotation -= verticalMouseInput;
+        verticalMouseRotation = Mathf.Clamp(verticalMouseRotation, 0f, 90f); // sets rotation limits in degrees
+
+        horizontalMouseRotation += horizontalMouseInput;
+        horizontalMouseRotation = Mathf.Clamp(horizontalMouseRotation, -90f, 90f); // sets rotation limits in degrees
+
+        transform.localRotation =  Quaternion.Euler(verticalMouseRotation, horizontalMouseRotation, 0f); // set axis rotation
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -36,43 +58,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Vector3 aimPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // aimPos.z = 0;
+        // calling logic methods
+        movementLogic();
+        projectileLogic();
 
-        // Get the user's horizontal input
-        float horizontalInput = Input.GetAxis("Horizontal");
-
-        // float mouseX = Input.GetAxis("Mouse X") * mouseSpeed * Time.deltaTime;
-
-        // // rotate on x axis with mouse
-        // mouseRotation = Mathf.Clamp(mouseRotation, -90f, 90f);
-        // mouseRotation -= mouseX;
-
-        // transform.Rotate(Vector3.up * mouseX); //rotates around x axis
-        // // = Quaternion.Euler(mouseX, 0f, 0f); //rotates around x axis
-
-
-            float mouseX = Input.GetAxis("Mouse X") * mouseSpeed;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSpeed;
-
-            mouseRotation -= mouseY;
-
-            mouseRotation = Mathf.Clamp(mouseRotation, -90f, 90f); //stops the camera from rotating to far up or down
-
-            // transform.localRotation = Quaternion.Euler(mouseRotation, 0f, 0f); //rotates around y axis
-            // transform.localRotation =  Quaternion.Euler(mouseRotation, 0f, 0f);
-            transform.Rotate(Vector3.up * mouseRotation); //rotates around the x axis
-
-            // Debug.Log(mouseX + "X " + mouseY + "Y");
-            Debug.Log("Mouse Rotation: " + mouseRotation);
-
-        // Move the launcher left and right
-        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
-
-        // On spacebar press or primary mouse button, shoot the projectile
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-        {
-            launchProjectile();
-        }
+        // Logging
+        // Debug.Log(horizontalMouseRotation + "X " + verticalMouseRotation + "Y");
     }
 }
