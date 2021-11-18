@@ -4,6 +4,7 @@
 /Good Luck Hunting/[Bb]uild/
 /Good Luck Hunting/[Bb]uilds/
 /Good Luck Hunting/Assets/AssetStoreTools*
+/Good Luck Hunting/Logs
 
 # Visual Studio cache directory
 .vs/
@@ -37,5 +38,5 @@ sysinfo.txt
 *.unitypackage
 
 # Logs
-/Good Luck Hunting/Logs
+*.*.log
 *.log
