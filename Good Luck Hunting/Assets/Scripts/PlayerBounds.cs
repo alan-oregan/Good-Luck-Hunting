@@ -10,11 +10,21 @@ public class PlayerBounds : MonoBehaviour
         
     }
 
+    public float xRange = 2.5f;
+
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x < ){
-            transform.position = new Vector3(/* COORD*/, transform.position.y, transform.position.z);
+        // check left side
+        if(transform.position.x < -xRange){
+
+            transform.position = new Vector3(- xRange, transform.position.y, transform.position.z);
+        }
+
+        // check right side
+        if(transform.position.x > xRange){
+
+            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
     }
 }

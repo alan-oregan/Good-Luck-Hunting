@@ -34,5 +34,6 @@ public class PlayerController : MonoBehaviour
             // Create the projectile at the tip of the launcher
             Instantiate(projectilePrefab, transform.position + offset, projectilePrefab.transform.rotation);
         }
+        
     }
 }
