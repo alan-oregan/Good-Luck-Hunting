@@ -4,32 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // variables
-    public float speed = 0.5f;
+
+    // Game Objects
     public GameObject projectilePrefab;
+
+    // Variables
+    public float movementSpeed = 5.0f;
     private float verticalInput;
     private float horizontalInput;
+    private float verticalMouseRotation;
+    private float horizontalMouseRotation;
 
     // offset for tip of launcher relative to launcher
     private Vector3 offset = new Vector3(0, 0.85f, 1);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 aimPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        aimPos.z = 0;
-
-        // Get the user's horizontal input
-        float horizontalInput = Input.GetAxis("Horizontal");
-
-        // Move the launcher left and right
-        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
+    void projectileLogic() {
 
         // On spacebar press or primary mouse button, shoot the projectile
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
@@ -37,6 +26,44 @@ public class PlayerController : MonoBehaviour
             // Create the projectile at the tip of the launcher
             Instantiate(projectilePrefab, transform.position + offset, projectilePrefab.transform.rotation);
         }
+    }
+
+    // Moving the launcher
+    void movementLogic() {
+        // Move the launcher horizontally with keyboard input
+        // relative to the worlds rotation so that the local rotation of the mouse doesnt affect it
+        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * movementSpeed, Space.World);
+
+        // rotating the launcher vertically and horizontally with mouse input
+        float horizontalMouseInput = Input.GetAxis("Mouse X") * movementSpeed;
+        float verticalMouseInput = Input.GetAxis("Mouse Y") * movementSpeed;
+
+        verticalMouseRotation -= verticalMouseInput;
+        verticalMouseRotation = Mathf.Clamp(verticalMouseRotation, 0f, 90f); // sets rotation limits in degrees
+
+        horizontalMouseRotation += horizontalMouseInput;
+        horizontalMouseRotation = Mathf.Clamp(horizontalMouseRotation, -90f, 90f); // sets rotation limits in degrees
+
+        transform.localRotation =  Quaternion.Euler(verticalMouseRotation, horizontalMouseRotation, 0f); // set axis rotation
+
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        // calling logic methods
+        movementLogic();
+        projectileLogic();
         
+        // Logging
+        // Debug.Log(horizontalMouseRotation + "X " + verticalMouseRotation + "Y");
     }
 }
