@@ -31,8 +31,9 @@ public class PlayerController : MonoBehaviour
     // Moving the launcher
     void movementLogic() {
         // Move the launcher horizontally with keyboard input
+        // relative to the worlds rotation so that the local rotation of the mouse doesnt affect it
         float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * movementSpeed);
+        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * movementSpeed, Space.World);
 
         // rotating the launcher vertically and horizontally with mouse input
         float horizontalMouseInput = Input.GetAxis("Mouse X") * movementSpeed;
