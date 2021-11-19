@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         // calling logic methods
         movementLogic();
         projectileLogic();
-
+        
         // Logging
         // Debug.Log(horizontalMouseRotation + "X " + verticalMouseRotation + "Y");
     }
