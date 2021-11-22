@@ -5,18 +5,28 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     // Variables
-    public float projectileSpeed = 10;
+    public float projectileForce = 25;
+    private Rigidbody playerRb;
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.Rotate(Vector3.left, 50);
+        playerRb = GetComponent<Rigidbody>();
+
+        // Put force on the projectile at instantiation
+        playerRb.AddForce(transform.forward * (projectileForce * 0.7f), ForceMode.Impulse);
+        playerRb.AddForce(transform.up * (projectileForce), ForceMode.Impulse);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Move the projectile forward
-        transform.Translate(Vector3.forward * Time.deltaTime * projectileSpeed);
+        if (transform.position.y < 0) {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void OnDestroy() {
+        Debug.Log("add explosion effects");
     }
 }
