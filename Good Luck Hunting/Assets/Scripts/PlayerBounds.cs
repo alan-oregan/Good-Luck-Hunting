@@ -18,7 +18,7 @@ public class PlayerBounds : MonoBehaviour
         // check left side
         if(transform.position.x < -xRange){
 
-            transform.position = new Vector3(- xRange, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
         }
 
         // check right side
