@@ -15,6 +15,9 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnDuck", startDelay, spawnInterval);
+
+        StartCoroutine(SpawnTarget());
+        
     }
 
     // Update is called once per frame
