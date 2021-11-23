@@ -5,14 +5,11 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     // Create GameObject SpawnManager
-    public GameObject[] duckPrefabs;
-    private float spawnRangeX = 20;
-    private float spawnPosZ = 20;
-
+    public GameObject[] duckPrefabs = new GameObject[3];
+    private float spawnRangeZHigher = 20;
+    private float spawnRangeZLower = 10;
     private float startDelay = 2;
-
     private float spawnInterval = 1.5f;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -23,15 +20,12 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if(Input.GetKeyDown(KeyCode.S)){
-        //     // Randomly Generate duck and spawn pos
-        //     SpawnDuck();
-        // }   
+        
     }
 
     void SpawnDuck(){
         int duckIndex = Random.Range(0, duckPrefabs.Length);
-        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
-        Instantiate(duckPrefabs[duckIndex], new Vector3(0, 0, 20), duckPrefabs[duckIndex].transform.rotation);
+        Vector3 spawnPos = new Vector3(-25, Random.Range(1, 4), Random.Range(spawnRangeZLower, spawnRangeZHigher));
+        Instantiate(duckPrefabs[duckIndex], spawnPos, duckPrefabs[duckIndex].transform.rotation);
     }
 }
