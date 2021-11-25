@@ -5,11 +5,12 @@ using UnityEngine;
 public class DetectCollisions : MonoBehaviour
 {
 
-    GameManager gameManager;
+    private ScoreManager scoreManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -19,8 +20,11 @@ public class DetectCollisions : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        gameManager.UpdateScore(1);
+        if (other.gameObject.CompareTag("Capsule"))
+        {
+            Destroy(other.gameObject);
+            scoreManager.UpdateScore(1);
+        }
         Destroy(gameObject);
-        Destroy(other.gameObject);
     }
 }
