@@ -40,4 +40,11 @@ public class GameManager : MonoBehaviour
         UI.gameOverText.gameObject.SetActive(false);
         UI.setScore(0);
     }
+
+    public void StartGame() {
+        GameManager.setGameActive(true);
+        UI.gameOverText.gameObject.SetActive(false);
+        // Disable start ui here
+        UI.setScore(0);
+    }
 }
