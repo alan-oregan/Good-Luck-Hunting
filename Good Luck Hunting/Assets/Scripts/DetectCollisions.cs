@@ -23,7 +23,7 @@ public class DetectCollisions : MonoBehaviour
         if (other.gameObject.CompareTag("Capsule"))
         {
             Destroy(other.gameObject);
-            gameManager.UpdateScore(1);
+            gameManager.UI.UpdateScore(1);
         }
         Destroy(gameObject);
     }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private UIManager UI;
+    public UIManager UI;
     private static bool gameActive = true;
 
     public static bool isGameActive()
@@ -30,10 +30,14 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update Score
-    public void UpdateScore(int scoreToAdd){
-        UI.UpdateScore(scoreToAdd);
-    }
+    // // Update Score
+    // public void UpdateScore(int scoreChangeAmount){
+    //     UI.UpdateScore(scoreChangeAmount);
+    // }
+    // // Update Score
+    // public void UpdateAmmo(int ammoChangeAmount){
+    //     UI.UpdateAmmo(ammoChangeAmount);
+    // }
 
     public void RestartGame() {
         GameManager.setGameActive(true);

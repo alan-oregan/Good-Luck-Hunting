@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
             // Create the projectile at the tip of the launcher
             Instantiate(projectilePrefab, pos, transform.localRotation);
 
-            updateAmmo();
+            //reduce ammo by one
+            gameManager.UI.UpdateAmmo(-1);
         }
     }
 
@@ -72,10 +73,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Start with 20 ammo
-        ammoCount = 20;
-        updateAmmo();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
