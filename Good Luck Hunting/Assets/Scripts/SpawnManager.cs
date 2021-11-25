@@ -27,7 +27,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnTarget(){
         while(true){
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(Random.Range(.5f, spawnInterval));
             if (GameManager.isGameActive()) {
                 int index = Random.Range(0, duckPrefabs.Length);
                 Vector3 spawnPos = new Vector3(-25, Random.Range(1, 4), Random.Range(spawnRangeZLower, spawnRangeZHigher));
