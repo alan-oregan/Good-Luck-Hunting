@@ -24,6 +24,7 @@ public class DetectCollisions : MonoBehaviour
         {
             Destroy(other.gameObject);
             gameManager.UI.UpdateScore(1);
+            gameManager.UI.UpdateAmmo(2);
         }
         Destroy(gameObject);
     }
