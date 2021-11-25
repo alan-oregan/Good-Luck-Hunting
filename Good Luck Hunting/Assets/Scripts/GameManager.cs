@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectCollisions : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-
     private ScoreManager scoreManager;
 
     // Start is called before the first frame update
@@ -16,15 +15,11 @@ public class DetectCollisions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnTriggerEnter(Collider other){
-        if (other.gameObject.CompareTag("Capsule"))
-        {
-            Destroy(other.gameObject);
-            scoreManager.UpdateScore(1);
-        }
-        Destroy(gameObject);
+    // Update Score
+    public void UpdateScore(int scoreToAdd){
+        scoreManager.UpdateScore(scoreToAdd);
     }
 }
