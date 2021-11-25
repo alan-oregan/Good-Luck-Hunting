@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     // Game Objects
     public GameObject projectilePrefab;
+    private GameManager gameManager;
 
     // Variables
     public float movementSpeed = 5.0f;
@@ -58,18 +59,19 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        // calling logic methods
-        movementLogic();
-        projectileLogic();
-        
-        // Logging
-        // Debug.Log(horizontalMouseRotation + "X " + verticalMouseRotation + "Y");
+        // calling logic methods while game is active
+        if (GameManager.isGameActive()) {
+            movementLogic();
+            projectileLogic();
+        }
+    // Logging
+    // Debug.Log(horizontalMouseRotation + "X " + verticalMouseRotation + "Y");
     }
 }
