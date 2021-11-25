@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ScoreManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     // Variables
     public int score;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverText;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +21,16 @@ public class ScoreManager : MonoBehaviour
     public void UpdateScore(int scoreToAdd){
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+
+        if (score > 5) {
+            gameOverText.gameObject.SetActive(true);
+            GameManager.setGameActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

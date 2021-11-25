@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private ScoreManager scoreManager;
+    private UIManager UI;
+    private static bool gameActive = true;
+
+    public static bool isGameActive()
+    {
+        return gameActive;
+    }
+
+    public static void setGameActive(bool isGameActive)
+    {
+        gameActive = isGameActive;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        UI = GameObject.Find("UIManager").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -20,6 +31,6 @@ public class GameManager : MonoBehaviour
 
     // Update Score
     public void UpdateScore(int scoreToAdd){
-        scoreManager.UpdateScore(scoreToAdd);
+        UI.UpdateScore(scoreToAdd);
     }
 }

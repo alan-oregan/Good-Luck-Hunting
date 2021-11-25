@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     // Game Objects
     public GameObject projectilePrefab;
+    private GameManager gameManager;
 
     //public TextMeshProUGUI ammoText;
 
@@ -74,16 +75,18 @@ public class PlayerController : MonoBehaviour
         // Start with 20 ammo
         ammoCount = 20;
         updateAmmo();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // calling logic methods
-        movementLogic();
-        projectileLogic();
-        
-        // Logging
-        // Debug.Log(horizontalMouseRotation + "X " + verticalMouseRotation + "Y");
+        // calling logic methods while game is active
+        if (GameManager.isGameActive()) {
+            movementLogic();
+            projectileLogic();
+        }
+    // Logging
+    // Debug.Log(horizontalMouseRotation + "X " + verticalMouseRotation + "Y");
     }
 }
