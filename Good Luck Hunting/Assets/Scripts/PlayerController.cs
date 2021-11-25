@@ -8,7 +8,10 @@ public class PlayerController : MonoBehaviour
     // Game Objects
     public GameObject projectilePrefab;
 
+    //public TextMeshProUGUI ammoText;
+
     // Variables
+    public int ammoCount;
     public float movementSpeed = 5.0f;
     private float verticalInput;
     private float horizontalInput;
@@ -31,6 +34,8 @@ public class PlayerController : MonoBehaviour
         {
             // Create the projectile at the tip of the launcher
             Instantiate(projectilePrefab, pos, transform.localRotation);
+
+            updateAmmo();
         }
     }
 
@@ -55,12 +60,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public void updateAmmo(){
+
+        //decrease ammo and display to text on screen
+        ammoCount -= 1;
+        //ammoText.text = "Ammo " + ammoCount;
 
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Start with 20 ammo
+        ammoCount = 20;
+        updateAmmo();
+    }
 
     // Update is called once per frame
     void Update()
