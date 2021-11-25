@@ -30,9 +30,18 @@ public class GameManager : MonoBehaviour
         // if there is no ammo left and all projectiles destroyed
         if (UI.getAmmo() + GameObject.FindGameObjectsWithTag("Projectile").Length == 0) {
             setGameActive(false);
+            destroyObjects("Capsule");
             UI.gameOverText.gameObject.SetActive(true);
         }
 
+    }
+
+    void destroyObjects(string tag) {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+
+        for (int i = 0; i < objects.Length; i++) {
+            Destroy(objects[i]);
+        }
     }
 
     public void RestartGame() {
