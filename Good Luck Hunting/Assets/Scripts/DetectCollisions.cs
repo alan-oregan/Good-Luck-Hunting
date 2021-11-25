@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DetectCollisions : MonoBehaviour
 {
+    public int pointValue = 1;
 
     private GameManager gameManager;
 
@@ -23,7 +24,7 @@ public class DetectCollisions : MonoBehaviour
         if (other.gameObject.CompareTag("Capsule"))
         {
             Destroy(other.gameObject);
-            gameManager.UI.UpdateScore(1);
+            gameManager.UI.UpdateScore(pointValue);
             gameManager.UI.UpdateAmmo(2);
         }
         Destroy(gameObject);
