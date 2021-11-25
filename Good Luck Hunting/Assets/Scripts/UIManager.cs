@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ammoText;
 
 
-
     public int getAmmo()
     {
         return this.ammo;
@@ -44,25 +43,31 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Start score with 0
-        setScore(0);
-        // Start with 20 ammo
-        setAmmo(20);
+        this.resetUI();
     }
 
 
     // Update Score
     public void UpdateScore(int scoreChangeAmount){
-        score += scoreChangeAmount;
+        this.score += scoreChangeAmount;
     }
 
     public void UpdateAmmo(int ammoChangeAmount){
-        ammo += ammoChangeAmount;
 
-        if (ammo <= 0) {
+        if (this.ammo + ammoChangeAmount <= 0) {
             gameOverText.gameObject.SetActive(true);
             GameManager.setGameActive(false);
+            this.setAmmo(0);
+        } else {
+            this.ammo += ammoChangeAmount;
         }
+    }
+
+    public void resetUI() {
+        //Start score with 0
+        this.setScore(0);
+        // Start with 20 ammo
+        this.setAmmo(20);
     }
 
     // Update is called once per frame

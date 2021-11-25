@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     private GameManager gameManager;
 
-    //public TextMeshProUGUI ammoText;
-
     // Variables
     public int ammoCount;
     public float movementSpeed = 5.0f;

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public UIManager UI;
-    private static bool gameActive = true;
+    private static bool gameActive = false;
 
     public static bool isGameActive()
     {
@@ -30,25 +30,16 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // // Update Score
-    // public void UpdateScore(int scoreChangeAmount){
-    //     UI.UpdateScore(scoreChangeAmount);
-    // }
-    // // Update Score
-    // public void UpdateAmmo(int ammoChangeAmount){
-    //     UI.UpdateAmmo(ammoChangeAmount);
-    // }
-
     public void RestartGame() {
         GameManager.setGameActive(true);
         UI.gameOverText.gameObject.SetActive(false);
-        UI.setScore(0);
+        UI.resetUI();
     }
 
     public void StartGame() {
         GameManager.setGameActive(true);
         UI.gameOverText.gameObject.SetActive(false);
-        UI.disableStartUI();
-        UI.setScore(0);
+        UI.startGameText.gameObject.SetActive(false);
+        UI.resetUI();
     }
 }
