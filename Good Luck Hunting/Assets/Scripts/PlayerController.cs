@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     void projectileLogic() {
 
+        // Want to use Raycast https://answers.unity.com/questions/338394/how-can-i-get-the-coordinates-of-the-point-on-an-o.html
+        // Used this: https://answers.unity.com/questions/329155/how-to-calculate-position-of-cannons-end.html
+
         Vector3 localOffset = transform.up * transform.localScale.y / 2 * 2.4f;
         Vector3 pos = transform.position + localOffset; //This is the position
 
