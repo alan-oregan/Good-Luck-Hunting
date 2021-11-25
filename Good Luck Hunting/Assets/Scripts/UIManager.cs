@@ -52,16 +52,16 @@ public class UIManager : MonoBehaviour
         this.score += scoreChangeAmount;
     }
 
+
     public void UpdateAmmo(int ammoChangeAmount){
 
         if (this.ammo + ammoChangeAmount <= 0) {
-            gameOverText.gameObject.SetActive(true);
-            GameManager.setGameActive(false);
             this.setAmmo(0);
         } else {
             this.ammo += ammoChangeAmount;
         }
     }
+
 
     public void resetUI() {
         //Start score with 0
@@ -69,6 +69,7 @@ public class UIManager : MonoBehaviour
         // Start with 20 ammo
         this.setAmmo(20);
     }
+
 
     // Update is called once per frame
     void Update()

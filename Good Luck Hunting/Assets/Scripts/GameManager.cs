@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour
         return gameActive;
     }
 
-    public static void setGameActive(bool isGameActive)
+    public static void setGameActive(bool newGameActive)
     {
-        gameActive = isGameActive;
+        gameActive = newGameActive;
     }
 
     // Start is called before the first frame update
@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if there is no ammo left and all projectiles destroyed
+        if (UI.getAmmo() + GameObject.FindGameObjectsWithTag("Projectile").Length == 0) {
+            setGameActive(false);
+            UI.gameOverText.gameObject.SetActive(true);
+        }
 
     }
 
