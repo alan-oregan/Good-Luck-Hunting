@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         destroyObjects("Capsule");
         updateHighScore();
         UI.gameOverText.gameObject.SetActive(true);
-        UI.controlTips.gameObject.SetActive(false);
+        UI.controlTips.gameObject.SetActive(true);
         Cursor.visible = true;
     }
 }
