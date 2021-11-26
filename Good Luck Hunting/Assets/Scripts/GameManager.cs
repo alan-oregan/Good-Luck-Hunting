@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame() {
         UI.gameOverText.gameObject.SetActive(false);
+        UI.controlTips.gameObject.SetActive(false);
         UI.resetUI();
         Time.timeScale = 1;
         gameActive = true;
@@ -111,7 +112,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() {
         UI.startGameText.gameObject.SetActive(false);
-        UI.controlTips.gameObject.SetActive(false);
         RestartGame();
     }
 
