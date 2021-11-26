@@ -8,12 +8,19 @@ public class UIManager : MonoBehaviour
     // Variables
     private int score;
     private int ammo;
+    public int startAmmo = 20;
+
 
     // getting text ui objects
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI gameOverTextHighScore;
     public TextMeshProUGUI startGameText;
+    public TextMeshProUGUI pauseGame;
+    public TextMeshProUGUI pauseGameHighScore;
     public TextMeshProUGUI ammoText;
+    public TextMeshProUGUI controlTips;
+
 
 
     public int getAmmo()
@@ -62,12 +69,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
     public void resetUI() {
         //Start score with 0
         this.setScore(0);
         // Start with 20 ammo
-        this.setAmmo(20);
+        this.setAmmo(startAmmo);
     }
 
 
@@ -75,6 +81,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         scoreText.text = "Score: " + score;
-        ammoText.text = "Ammo: " + ammo;
+        ammoText.text = "Ammo: " + ammo + "/"+ startAmmo;
     }
 }
