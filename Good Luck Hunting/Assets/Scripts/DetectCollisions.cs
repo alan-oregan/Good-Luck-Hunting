@@ -5,6 +5,7 @@ using UnityEngine;
 public class DetectCollisions : MonoBehaviour
 {
     public int pointValue = 1;
+    public int ammoValue = 2;
 
     private GameManager gameManager;
 
@@ -25,7 +26,7 @@ public class DetectCollisions : MonoBehaviour
         {
             Destroy(other.gameObject);
             gameManager.UI.UpdateScore(pointValue);
-            gameManager.UI.UpdateAmmo(2);
+            gameManager.UI.UpdateAmmo(ammoValue);
         }
         Destroy(gameObject);
     }

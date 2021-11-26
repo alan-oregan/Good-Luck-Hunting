@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     // Variables
     private int score;
     private int ammo;
-    public int startAmmo = 20;
+    public int maxAmmo = 20;
 
 
     // getting text ui objects
@@ -62,8 +62,10 @@ public class UIManager : MonoBehaviour
 
     public void UpdateAmmo(int ammoChangeAmount){
 
-        if (this.ammo + ammoChangeAmount <= 0) {
+        if (this.ammo + ammoChangeAmount <= 0 ) {
             this.setAmmo(0);
+        } else if(this.ammo + ammoChangeAmount > maxAmmo) {
+            this.setAmmo(maxAmmo);
         } else {
             this.ammo += ammoChangeAmount;
         }
@@ -72,8 +74,8 @@ public class UIManager : MonoBehaviour
     public void resetUI() {
         //Start score with 0
         this.setScore(0);
-        // Start with 20 ammo
-        this.setAmmo(startAmmo);
+        // Start with max ammo
+        this.setAmmo(maxAmmo);
     }
 
 
@@ -81,6 +83,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         scoreText.text = "Score: " + score;
-        ammoText.text = "Ammo: " + ammo + "/"+ startAmmo;
+        ammoText.text = "Ammo: " + ammo + "/"+ maxAmmo;
     }
 }
