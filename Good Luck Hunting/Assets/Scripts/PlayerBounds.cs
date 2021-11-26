@@ -10,7 +10,7 @@ public class PlayerBounds : MonoBehaviour
         
     }
 
-    public float xRange = 2.5f;
+    public float xRange = 1.5f;
 
     // Update is called once per frame
     void Update()
