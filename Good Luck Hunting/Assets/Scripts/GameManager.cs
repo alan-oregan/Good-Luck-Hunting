@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
             gameOver();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && gameStarted) {
+        if ((Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown("p")) && gameStarted) {
             pauseGame();
             Cursor.visible = true;
         }
