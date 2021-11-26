@@ -31,11 +31,14 @@ public class PlayerController : MonoBehaviour
         // On spacebar press or primary mouse button, shoot the projectile
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            // Create the projectile at the tip of the launcher
-            Instantiate(projectilePrefab, pos, transform.localRotation);
+            if (gameManager.UI.getAmmo() > 0)
+            {
+                // Create the projectile at the tip of the launcher
+                Instantiate(projectilePrefab, pos, transform.localRotation);
 
-            //reduce ammo by one
-            gameManager.UI.UpdateAmmo(-1);
+                //reduce ammo by one
+                gameManager.UI.UpdateAmmo(-1);
+            }
         }
     }
 
@@ -51,10 +54,10 @@ public class PlayerController : MonoBehaviour
         float verticalMouseInput = Input.GetAxis("Mouse Y") * movementSpeed;
 
         verticalMouseRotation -= verticalMouseInput;
-        verticalMouseRotation = Mathf.Clamp(verticalMouseRotation, 30f, 50f); // sets rotation limits in degrees
+        verticalMouseRotation = Mathf.Clamp(verticalMouseRotation, 0f, 90f); // sets rotation limits in degrees
 
         horizontalMouseRotation += horizontalMouseInput;
-        horizontalMouseRotation = Mathf.Clamp(horizontalMouseRotation, -40f, 40f); // sets rotation limits in degrees
+        horizontalMouseRotation = Mathf.Clamp(horizontalMouseRotation, -90f, 90f); // sets rotation limits in degrees
 
         transform.localRotation =  Quaternion.Euler(verticalMouseRotation, horizontalMouseRotation, 0f); // set axis rotation
 
