@@ -1,7 +1,7 @@
 # Good-Luck-Hunting
  Side View Hunting Game
 
-##Aim of the Game
+## Aim of the Game
 To get the highest score possible
 
 ## Authors
