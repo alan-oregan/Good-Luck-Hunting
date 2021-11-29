@@ -26,3 +26,6 @@ To get the highest score possible
   - Score
   - UIManager
   - GameManager
+
+GitHub Pages Says its Built from the main branch but its set to the Alpha Branch
+![image](https://user-images.githubusercontent.com/72257010/143913105-431ad590-e19e-49d3-8271-28a588a5a07b.png)
