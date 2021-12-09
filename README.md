@@ -33,8 +33,21 @@ GitHub Pages Says its Built from the main branch but its set to the Alpha Branch
 
 
 ## References
+### Code
 - Aiming (Alpha)
   - [Unity Answers Post](https://answers.unity.com/questions/329155/how-to-calculate-position-of-cannons-end.html)
 - Aiming (Beta)
   - [RayCasting YouTube Tutorial](https://www.youtube.com/watch?v=THnivyG0Mvo)
   - [Projectile Projection Tutorial](https://www.youtube.com/watch?v=RnEO3MRPr5Y)
+### Assets
+#### UI
+- [Unit 5](https://learn.unity.com/project/unit-5-user-interface?courseId=5cf96c41edbc2a2ca6e8810f)
+#### Floor
+- [Unit 2](https://learn.unity.com/project/unit-2-basic-gameplay?courseId=5cf96c41edbc2a2ca6e8810f)
+#### Background
+- [Unit 3](https://learn.unity.com/project/unit-3-sound-and-effects?courseId=5cf96c41edbc2a2ca6e8810f)
+#### Animations
+- 
+#### Sounds
+- Sound Effects
+  - [Unit 3](https://learn.unity.com/project/unit-3-sound-and-effects?courseId=5cf96c41edbc2a2ca6e8810f)
