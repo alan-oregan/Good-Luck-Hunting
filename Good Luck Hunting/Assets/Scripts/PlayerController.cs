@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
                 // Create the projectile at the tip of the launcher
                 Instantiate(projectilePrefab, pos, transform.localRotation);
 
-                //reduce ammo by one
+                // reduce ammo by one
                 gameManager.UI.UpdateAmmo(-1);
             }
         }
