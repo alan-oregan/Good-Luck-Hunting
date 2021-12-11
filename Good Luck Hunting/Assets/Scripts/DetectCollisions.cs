@@ -47,7 +47,7 @@ public class DetectCollisions : MonoBehaviour
 
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
         explosionParticle.Play();
-        explosionParticle.Stop();
+        
 
         Destroy(gameObject);
     }
