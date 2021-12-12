@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Capsule
   - Projectile
+  - LaunchPoint
   layers:
   - Default
   - TransparentFX
