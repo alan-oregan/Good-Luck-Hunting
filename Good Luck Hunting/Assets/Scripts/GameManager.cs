@@ -57,11 +57,11 @@ public class GameManager : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown("p")) && gameStarted) {
             pauseGame();
-            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         if (gameActive) {
-            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
@@ -83,13 +83,12 @@ public class GameManager : MonoBehaviour
             gameActive = false;
             Time.timeScale = 0;
             updateHighScore();
-            UI.pauseGame.gameObject.SetActive(true);
-            UI.controlTips.gameObject.SetActive(true);
+            UI.eneablePauseMenu(true);
         } else {
             gameActive = true;
             Time.timeScale = 1;
-            UI.pauseGame.gameObject.SetActive(false);
-            UI.controlTips.gameObject.SetActive(false);
+            UI.eneablePauseMenu(false);
+
         }
     }
 
@@ -102,8 +101,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void RestartGame() {
-        UI.gameOverText.gameObject.SetActive(false);
-        UI.controlTips.gameObject.SetActive(false);
+        UI.enableGameOverMenu(false);
         UI.resetUI();
         Time.timeScale = 1;
         gameActive = true;
@@ -112,7 +110,12 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() {
         UI.startGameText.gameObject.SetActive(false);
-        RestartGame();
+        this.RestartGame();
+    }
+
+    public void openGitHub()
+    {
+        Application.OpenURL("https://github.com/alan-oregan/Good-Luck-Hunting");
     }
 
     public void gameOver() {
@@ -120,8 +123,7 @@ public class GameManager : MonoBehaviour
         gameStarted = false;
         destroyObjects("Capsule");
         updateHighScore();
-        UI.gameOverText.gameObject.SetActive(true);
-        UI.controlTips.gameObject.SetActive(true);
-        Cursor.visible = true;
+        UI.enableGameOverMenu(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 }
