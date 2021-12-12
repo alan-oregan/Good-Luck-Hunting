@@ -10,18 +10,16 @@ public class UIManager : MonoBehaviour
     private int ammo;
     public int maxAmmo = 20;
 
-
     // getting text ui objects
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
-    public TextMeshProUGUI gameOverTextHighScore;
+    public TextMeshProUGUI ammoText;
+    public TextMeshProUGUI leftControlTips;
+    public TextMeshProUGUI rightControlTips;
     public TextMeshProUGUI startGameText;
     public TextMeshProUGUI pauseGame;
     public TextMeshProUGUI pauseGameHighScore;
-    public TextMeshProUGUI ammoText;
-    public TextMeshProUGUI controlTips;
-
-
+    public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI gameOverTextHighScore;
 
     public int getAmmo()
     {
@@ -51,6 +49,43 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         this.resetUI();
+    }
+
+
+    /**
+     * Enable control tips
+     */
+    public void eneableControlTips(bool value)
+    {
+        leftControlTips.gameObject.SetActive(value);
+        rightControlTips.gameObject.SetActive(value);
+    }
+
+    /**
+    * Enable start menu
+    */
+    public void enableStartMenu(bool value)
+    {
+        startGameText.gameObject.SetActive(value);
+        this.eneableControlTips(value);
+    }
+
+    /**
+    * Enable pause menu
+    */
+    public void eneablePauseMenu(bool value)
+    {
+        pauseGame.gameObject.SetActive(value);
+        this.eneableControlTips(value);
+    }
+
+    /**
+    * Enable game over menu
+    */
+    public void enableGameOverMenu(bool value)
+    {
+        gameOverText.gameObject.SetActive(value);
+        this.eneableControlTips(value);
     }
 
 

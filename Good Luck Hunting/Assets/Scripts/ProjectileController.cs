@@ -6,16 +6,20 @@ public class ProjectileController : MonoBehaviour
 {
     // Variables
     public float projectileForce = 25;
-    private Rigidbody playerRb;
+    private Rigidbody projectileRigidBody;
+    private GameObject launchPoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
+        projectileRigidBody = GetComponent<Rigidbody>();
+
+        launchPoint = GameObject.FindGameObjectWithTag("LaunchPoint");
+
+        transform.rotation = launchPoint.transform.rotation;
 
         // Put force on the projectile at instantiation
-        playerRb.AddForce(transform.forward * (projectileForce * 0.7f), ForceMode.Impulse);
-        playerRb.AddForce(transform.up * (projectileForce), ForceMode.Impulse);
+        projectileRigidBody.velocity = transform.up * projectileForce;
     }
 
     // Update is called once per frame

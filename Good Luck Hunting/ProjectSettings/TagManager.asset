@@ -9,6 +9,7 @@ TagManager:
   - OrangeDuck
   - PondDuck
   - WhiteDuck
+  - LaunchPoint
   layers:
   - Default
   - TransparentFX
