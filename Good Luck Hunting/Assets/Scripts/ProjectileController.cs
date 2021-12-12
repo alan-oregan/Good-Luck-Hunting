@@ -31,6 +31,7 @@ public class ProjectileController : MonoBehaviour
     }
 
     void OnDestroy() {
-        //Debug.Log("add explosion effects");
+        
+        Debug.Log("Boom");
     }
 }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Capsule
   - Projectile
+  - OrangeDuck
+  - PondDuck
+  - WhiteDuck
   - LaunchPoint
   layers:
   - Default
