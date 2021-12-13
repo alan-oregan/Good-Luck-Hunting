@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
                 // Put force on the projectile at instantiation
                 projectileRigidBody.velocity = transform.up * projectileForce;
 
-                // reduce ammo by one
+                //reduce ammo by one
                 gameManager.UI.UpdateAmmo(-1);
 
                 CameraShaker.Instance.ShakeOnce(2f, 2f, .1f, .5f);
