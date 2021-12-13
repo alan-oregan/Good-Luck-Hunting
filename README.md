@@ -38,6 +38,9 @@ To get the highest score possible
   - Score
   - UIManager
   - GameManager
+  - Added Duck Prefabs
+  - Music
+  - Cannon SFX
 
 ## Notes
 
@@ -85,7 +88,7 @@ The pages build is now on the main branch after grades for final version were su
 
 #### Skybox
 
-- [Skybox Tutuorial](https://youtu.be/anYBZzxy1FA))
+- [Skybox Tutuorial](https://youtu.be/anYBZzxy1FA)
 
 - [Skybox Source](https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353)
 
@@ -110,6 +113,8 @@ The pages build is now on the main branch after grades for final version were su
 - Sound Effects
 
   - [Unit 3](https://learn.unity.com/project/unit-3-sound-and-effects?courseId=5cf96c41edbc2a2ca6e8810f)
+  - https://assetstore.unity.com/packages/audio/music/electronic/retro-music-pack-free-62644
+  - https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096
 
   - [Shooting Sound](https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096)
 
