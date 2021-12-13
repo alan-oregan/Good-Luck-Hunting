@@ -10,11 +10,15 @@ TagManager:
   - PondDuck
   - WhiteDuck
   - LaunchPoint
+  - WhiteDuck
+  - OrangeDuck
+  - PondDuck
+  - Cannonball
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Cannonball
   - Water
   - UI
   - 

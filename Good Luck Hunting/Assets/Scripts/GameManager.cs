@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public UIManager UI;
+    public MusicManager music;
     private static bool gameActive = false;
     private static bool gameStarted = false;
 
@@ -45,19 +46,19 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UI = GameObject.Find("UIManager").GetComponent<UIManager>();
+        music = GameObject.Find("MusicManager").GetComponent<MusicManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // if there is no ammo left and all projectiles destroyed
-        if (UI.getAmmo() + GameObject.FindGameObjectsWithTag("Projectile").Length == 0) {
+        if (UI.getAmmo() + GameObject.FindGameObjectsWithTag("Projectile").Length == 0 && gameStarted) {
             gameOver();
         }
 
         if ((Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown("p")) && gameStarted) {
             pauseGame();
-            Cursor.lockState = CursorLockMode.None;
         }
 
         if (gameActive) {
@@ -84,11 +85,13 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             updateHighScore();
             UI.eneablePauseMenu(true);
+            music.pauseAudio();
+            Cursor.lockState = CursorLockMode.None;
         } else {
             gameActive = true;
             Time.timeScale = 1;
             UI.eneablePauseMenu(false);
-
+            music.playAudio();
         }
     }
 
@@ -106,6 +109,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         gameActive = true;
         gameStarted = true;
+        music.playGamePlayAudio();
     }
 
     public void StartGame() {
@@ -121,9 +125,12 @@ public class GameManager : MonoBehaviour
     public void gameOver() {
         gameActive = false;
         gameStarted = false;
-        destroyObjects("Capsule");
+        destroyObjects("WhiteDuck");
+        destroyObjects("OrangeDuck");
+        destroyObjects("PondDuck");
         updateHighScore();
         UI.enableGameOverMenu(true);
         Cursor.lockState = CursorLockMode.None;
+        music.playGameOverAudio();
     }
 }
