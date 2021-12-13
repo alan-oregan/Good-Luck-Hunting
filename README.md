@@ -1,14 +1,20 @@
+
 # Good-Luck-Hunting
- Side View Hunting Game
+
+Side View Hunting Game
 
 ## Aim of the Game
+
 To get the highest score possible
 
 ## Authors
+
 - Alan O'Regan
+
 - Attila Nagy
 
 ## Contributions
+
 - Alan O'Regan
   - Player Movement
   - Pause Menu
@@ -18,6 +24,12 @@ To get the highest score possible
   - High Score
   - Control Tips
   - Bug Fixes
+  - Cannon Model
+  - Created landscape
+  - Particle Effects
+  - Projection line
+  - Skybox
+  - Camera Shake
 
 - Attila Nagy
   - Player Bounds
@@ -32,6 +44,7 @@ To get the highest score possible
 GitHub Pages Says its Built from the main branch but its set to the Alpha Branch
 ![image](https://user-images.githubusercontent.com/72257010/143913105-431ad590-e19e-49d3-8271-28a588a5a07b.png)
 
+The pages build is now on the main branch after grades for final version were submitted
 
 ## References
 
@@ -41,13 +54,20 @@ GitHub Pages Says its Built from the main branch but its set to the Alpha Branch
 
   - Spawn Location from [Unity Answers Post](https://answers.unity.com/questions/329155/how-to-calculate-position-of-cannons-end.html)
 
-  - Mouse input from [YouTube Tutorial](https://www.youtube.com/watch?v=_QajrabyTJc)
-
-- Aiming (Beta)
-
-  - RayCasting from [YouTube Tutorial](https://www.youtube.com/watch?v=THnivyG0Mvo)
+- Aiming
 
   - Projectile Projection from [YouTube Tutorial](https://www.youtube.com/watch?v=RnEO3MRPr5Y)
+
+    - Also Made Projection line go green when in contact with obstacle
+
+  - Mouse input from [YouTube Tutorial](https://www.youtube.com/watch?v=_QajrabyTJc)
+
+    - Added keyboard input as well
+
+- Camera Shake
+  - [Camera Shake](https://github.com/andersonaddo/EZ-Camera-Shake-Unity)
+
+  - [CameraShake Tutorial](https://www.youtube.com/watch?v=9A9yj8KnM8c)
 
 ### Assets
 
@@ -63,26 +83,37 @@ GitHub Pages Says its Built from the main branch but its set to the Alpha Branch
 
 - [Trees](https://assetstore.unity.com/packages/3d/vegetation/trees/low-poly-tree-pack-57866)
 
-
 #### Skybox
 
 - [Skybox Tutuorial](https://youtu.be/anYBZzxy1FA))
 
 - [Skybox Source](https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353)
 
-#### Background
+#### Models
 
-- [Unit 3](https://learn.unity.com/project/unit-3-sound-and-effects?courseId=5cf96c41edbc2a2ca6e8810f)
+- [Rubber Duck](https://assetstore.unity.com/packages/3d/props/super-rubber-duck-pack-34781)
 
-#### Animations
+- [Cannon Pack](https://assetstore.unity.com/packages/3d/props/weapons/stylish-cannon-pack-174145)
 
-- [Unit 3](https://learn.unity.com/project/unit-3-sound-and-effects?courseId=5cf96c41edbc2a2ca6e8810f)
+  - Edited base of cannon
 
 #### Sounds
+
+- Music
+
+  - [Start Game Music (Trimmed)](https://youtu.be/mhGhgmfF27E)
+
+  - [Game Play Music](https://youtu.be/pF2tXC1pXNo)
+
+  - [Game Over Music](https://youtu.be/lANdkTKgp7A)
 
 - Sound Effects
 
   - [Unit 3](https://learn.unity.com/project/unit-3-sound-and-effects?courseId=5cf96c41edbc2a2ca6e8810f)
+
+  - [Shooting Sound](https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096)
+
+  - [Bing Bong](https://www.youtube.com/watch?v=2WaDvi11hmA)
 
 - Particle Effects
 

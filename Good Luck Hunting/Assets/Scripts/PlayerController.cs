@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
 
     // Variables
+    private AudioSource cannonAudio;
+    public AudioClip shootSound;
     public int ammoCount;
     public float movementSpeed = 5.0f;
-    private float verticalMouseRotation;
-    private float horizontalMouseRotation;
+    public float projectileForce = 25;
+    private float verticalRotation;
+    private float horizontalRotation;
 
     void projectileLogic() {
 
@@ -23,33 +27,47 @@ public class PlayerController : MonoBehaviour
         {
             if (gameManager.UI.getAmmo() > 0)
             {
+                // Play Cannon shot sound
+                cannonAudio.PlayOneShot(shootSound, .1f);
+
                 // Create the projectile at the tip of the launcher
-                Instantiate(projectilePrefab, LaunchPoint.position, LaunchPoint.localRotation);
+                GameObject projectile = Instantiate(projectilePrefab, LaunchPoint.position, LaunchPoint.localRotation);
+
+                Rigidbody projectileRigidBody = projectile.GetComponent<Rigidbody>();
+
+                transform.rotation = LaunchPoint.transform.rotation;
+
+                // Put force on the projectile at instantiation
+                projectileRigidBody.velocity = transform.up * projectileForce;
 
                 //reduce ammo by one
                 gameManager.UI.UpdateAmmo(-1);
+
+                CameraShaker.Instance.ShakeOnce(2f, 2f, .1f, .5f);
             }
         }
     }
 
     // Moving the launcher
     void movementLogic() {
-        // Move the launcher horizontally with keyboard input
-        // relative to the worlds rotation so that the local rotation of the mouse doesnt affect it
-        float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * movementSpeed, Space.World);
 
-        // rotating the launcher vertically and horizontally with mouse input
+        // rotating the launcher vertically and horizontally with mouse and keyboard input
+
+        float horizontalKeyboardInput = Input.GetAxis("Vertical") * movementSpeed;
+        float verticalKeyboardInput = Input.GetAxis("Horizontal") * movementSpeed;
+
         float horizontalMouseInput = Input.GetAxis("Mouse Y") * movementSpeed;
         float verticalMouseInput = Input.GetAxis("Mouse X") * movementSpeed;
 
-        verticalMouseRotation -= verticalMouseInput;
-        verticalMouseRotation = Mathf.Clamp(verticalMouseRotation, 0f, 180f); // sets rotation limits in degrees
+        verticalRotation += verticalMouseInput;
+        verticalRotation += verticalKeyboardInput;
+        verticalRotation = Mathf.Clamp(verticalRotation, 40f, 140f);
 
-        horizontalMouseRotation += horizontalMouseInput;
-        horizontalMouseRotation = Mathf.Clamp(horizontalMouseRotation, -90f, 0f); // sets rotation limits in degrees
+        horizontalRotation -= horizontalMouseInput;
+        horizontalRotation -= horizontalKeyboardInput;
+        horizontalRotation = Mathf.Clamp(horizontalRotation, -45f, 0f);
 
-        transform.localRotation =  Quaternion.Euler(0f, verticalMouseRotation, horizontalMouseRotation); // set axis rotation
+        transform.localRotation =  Quaternion.Euler(0f, verticalRotation, horizontalRotation);
 
         // Logging
         //Debug.Log(horizontalMouseRotation + "X " + verticalMouseRotation + "Y");
@@ -65,7 +83,10 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        // Cannon audio
+        cannonAudio = GetComponent<AudioSource>();
+
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
