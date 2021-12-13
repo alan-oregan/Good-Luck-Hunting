@@ -26,6 +26,9 @@ To get the highest score possible
   - Score
   - UIManager
   - GameManager
+  - Added Duck Prefabs
+  - Music
+  - Cannon SFX
 
 ## Notes
 
@@ -83,6 +86,8 @@ GitHub Pages Says its Built from the main branch but its set to the Alpha Branch
 - Sound Effects
 
   - [Unit 3](https://learn.unity.com/project/unit-3-sound-and-effects?courseId=5cf96c41edbc2a2ca6e8810f)
+  - https://assetstore.unity.com/packages/audio/music/electronic/retro-music-pack-free-62644
+  - https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096
 
 - Particle Effects
 
