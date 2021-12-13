@@ -69,7 +69,7 @@ GitHub Pages Says its Built from the main branch but its set to the Alpha Branch
 
 #### Skybox
 
-- [Skybox Tutuorial](https://youtu.be/anYBZzxy1FA))
+- [Skybox Tutuorial](https://youtu.be/anYBZzxy1FA)
 
 - [Skybox Source](https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353)
 
